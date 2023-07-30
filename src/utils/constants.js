@@ -1,0 +1,1 @@
+export const LOGO_URL = "https://1000logos.net/wp-content/uploads/2016/10/Burger-King-Logo-1999.jpg"
