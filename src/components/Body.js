@@ -3,6 +3,9 @@ import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]);
+  const [filteredList, setFilteredList] = useState([]);
+
+  const [searchRes, setSearchRes] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -17,22 +20,40 @@ const Body = () => {
     setRestaurantList(
       json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+    setFilteredList(
+      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
 
   const handleFilter = () => {
     const filteredList = restaurantList.filter(
       (item) => item.info.avgRating > 4
     );
-    setRestaurantList(filteredList);
+    setFilteredList(filteredList);
+  };
+
+  const handleSerarch = (e) => {
+    setSearchRes(e.target.value);
+  };
+
+  const searchHandler = () => {
+    const filteredList = restaurantList.filter((item) =>
+      item.info.name.toLowerCase().includes(searchRes.toLowerCase())
+    );
+    setFilteredList(filteredList);
   };
 
   return (
     <div className="body">
       <div className="filter-container">
+        <div>
+          <input value={searchRes} onChange={handleSerarch} />
+          <button onClick={searchHandler}>Search</button>
+        </div>
         <button onClick={handleFilter}>Top Rated Restaurants</button>
       </div>
       <div className="res-container">
-        {restaurantList.map((res) => (
+        {filteredList.map((res) => (
           <RestaurantCard key={res.info.id} restaurantList={res} />
         ))}
       </div>
