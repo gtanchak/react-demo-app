@@ -53,9 +53,13 @@ const Body = () => {
         <button onClick={handleFilter}>Top Rated Restaurants</button>
       </div>
       <div className="res-container">
-        {filteredList.map((res) => (
-          <RestaurantCard key={res.info.id} restaurantList={res} />
-        ))}
+        {filteredList.length ? (
+          filteredList.map((res) => (
+            <RestaurantCard key={res.info.id} restaurantList={res} />
+          ))
+        ) : (
+          <h1>Loading....</h1>
+        )}
       </div>
     </div>
   );
