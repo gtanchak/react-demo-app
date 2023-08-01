@@ -13,6 +13,7 @@
 .nav-items ul {
   display: flex;
   list-style-type: none;
+  align-items: center;
 }
 
 .nav-items ul li {
@@ -54,4 +55,8 @@
 
 .res-logo {
   width: 100%;
+}
+
+.login {
+  padding: 10px 20px;
 }
