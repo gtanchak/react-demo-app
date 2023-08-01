@@ -35,12 +35,13 @@ const Body = () => {
   const handleSerarch = (e) => {
     setSearchRes(e.target.value);
   };
-
   const searchHandler = () => {
-    const filteredList = restaurantList.filter((item) =>
-      item.info.name.toLowerCase().includes(searchRes.toLowerCase())
-    );
-    setFilteredList(filteredList);
+    if (Boolean(/^\S*$/.test(searchRes))) {
+      const filteredList = restaurantList.filter((item) =>
+        item.info.name.toLowerCase().includes(searchRes.toLowerCase())
+      );
+      setFilteredList(filteredList);
+    }
   };
 
   return (
