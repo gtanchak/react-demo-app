@@ -19,12 +19,21 @@ const Body = () => {
     );
   };
 
+  const handleFilter = () => {
+    const filteredList = restaurantList.filter(
+      (item) => item.info.avgRating > 4
+    );
+    setRestaurantList(filteredList);
+  };
+
   return (
     <div className="body">
-      <div className="search">Search</div>
+      <div className="filter-container">
+        <button onClick={handleFilter}>Top Rated Restaurants</button>
+      </div>
       <div className="res-container">
         {restaurantList.map((res) => (
-          <RestaurantCard restaurantList={res} />
+          <RestaurantCard key={res.info.id} restaurantList={res} />
         ))}
       </div>
     </div>

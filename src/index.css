@@ -49,8 +49,8 @@
   border: 1px solid rgba(0, 0, 0);
 }
 
-.search {
-  padding: 10px;
+.filter-container {
+  margin: 10px 0;
 }
 
 .res-logo {
