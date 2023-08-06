@@ -18,28 +18,31 @@ const AppLayout = () => {
   );
 };
 
-
 const appRouter = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <AppLayout />,
     children: [
       {
-        path: '/',
-        element: <Body />
+        path: "/",
+        element: <Body />,
       },
       {
-        path: '/about',
-        element: <About />
+        path: "/about",
+        element: <About />,
       },
       {
-        path: '/contact',
-        element: <Contact />
-      }],
-    errorElement: <Error />
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/restaurant/:id",
+        element: <Contact />,
+      },
+    ],
+    errorElement: <Error />,
   },
-
-])
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
