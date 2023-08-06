@@ -1,8 +1,15 @@
 import { FOOD_URL } from "../utils/constants";
 
+import { useNavigate } from "react-router-dom";
+
 const RestaurantCard = ({ restaurantList }) => {
+  const navigate = useNavigate();
+
   return (
-    <div className="res-card">
+    <div
+      className="res-card"
+      onClick={() => navigate(`restaurant/${restaurantList.info.id}`)}
+    >
       <div className="res-img">
         <img src={FOOD_URL + restaurantList.info.cloudinaryImageId} />
       </div>

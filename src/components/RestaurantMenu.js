@@ -1,27 +1,45 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { MENU_API_URL } from "../utils/constants";
 
 const RestaurantMenu = () => {
   const [resInfo, setResInfo] = useState(null);
+  const { id } = useParams();
+
   useEffect(() => {
     fetchMenu();
   }, []);
 
   const fetchMenu = async () => {
-    const data = awaitfetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=21.210826&lng=72.8580097&restaurantId=74471&catalog_qa=undefined&submitAction=ENTER"
-    );
+    const data = await fetch(MENU_API_URL + id);
     const json = await data.json();
     setResInfo(json.data);
   };
 
+  if (resInfo === null) return <h1>Loading...</h1>;
+
+  const { name, cuisines, costForTwoMessage } = resInfo.cards[0].card.card.info;
+  const { itemCards } =
+    resInfo?.cards[2].groupedCard.cardGroupMap.REGULAR.cards[2].card.card;
+
   return (
     <div className="menu">
-      <h1>Name of the restaurant</h1>
-      <h2>Menu</h2>
+      <h1>{name}</h1>
 
-      <ul>
-        <li>Biryani</li>
-        <li>Burgers</li>
+      <p>
+        {cuisines && cuisines.join(", ")} - {costForTwoMessage}
+      </p>
+
+      <ul className="menu-list">
+        {itemCards?.map((item) => (
+          <li>
+            {item.card.info.name} -{" "}
+            <strong>
+              Rs.{" "}
+              {item.card.info.price / 100 || item.card.info.defaultPrice / 100}
+            </strong>
+          </li>
+        ))}
       </ul>
     </div>
   );
