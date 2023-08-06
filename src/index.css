@@ -62,3 +62,14 @@
 .login {
   padding: 10px 20px;
 }
+
+.menu-list {
+  list-style: none;
+  gap: 10px;
+  display: inline-flex;
+  flex-direction: column;
+}
+.menu-list li {
+  border: 1px solid #efefef;
+  padding: 5px;
+}
