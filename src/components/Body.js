@@ -1,11 +1,15 @@
-import restList from "../utils/constants";
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
+
+import useOnlineStatus from "../utils/useOnlineStatus";
+
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
 
   const [searchRes, setSearchRes] = useState("");
+
+  const onlineStatus = useOnlineStatus();
 
   useEffect(() => {
     fetchData();
@@ -43,6 +47,10 @@ const Body = () => {
       setFilteredList(filteredList);
     }
   };
+
+  if (!onlineStatus) {
+    return <h1>You're ofline please check your internet connection</h1>;
+  }
 
   return (
     <div className="body">
