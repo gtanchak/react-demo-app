@@ -1,6 +1,5 @@
-import { FOOD_URL } from "../utils/constants";
-
 import { useNavigate } from "react-router-dom";
+import { FOOD_URL } from "../constants/common";
 
 const RestaurantCard = ({ restaurantList }) => {
   const navigate = useNavigate();
