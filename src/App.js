@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 
 import Header from "./components/Header";
 import "./index.css";
-import Body from "./components/Body";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 
 import Contact from "./components/Contact";
@@ -12,6 +11,7 @@ import RestaurantMenu from "./components/RestaurantMenu";
 
 const Grocery = lazy(() => import("./components/Grocery"));
 const About = lazy(() => import("./components/About"));
+const Body = lazy(() => import("./components/Body"));
 
 const AppLayout = () => {
   return (
