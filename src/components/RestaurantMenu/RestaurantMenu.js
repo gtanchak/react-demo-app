@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import useRestaurantMenu from "../utils/useRestaurantMenu";
+import useRestaurantMenu from "./useRestaurantMenu";
 
 const RestaurantMenu = () => {
   const { id } = useParams();
