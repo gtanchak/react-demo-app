@@ -5,11 +5,12 @@ import useRestaurantMenu from "./useRestaurantMenu";
 const RestaurantMenu = () => {
   const { id } = useParams();
 
-  const { resInfo } = useRestaurantMenu(id);
+  const resInfo = useRestaurantMenu(id);
 
   if (resInfo === null) return <h1>Loading...</h1>;
 
-  const { name, cuisines, costForTwoMessage } = resInfo.cards[0].card.card.info;
+  const { name, cuisines, costForTwoMessage } =
+    resInfo?.cards[0].card.card.info;
   const { itemCards } =
     resInfo?.cards[2].groupedCard.cardGroupMap.REGULAR.cards[2].card.card;
 
