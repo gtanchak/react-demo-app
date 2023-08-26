@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "./useRestaurantMenu";
+import RestaurantCategory from "./RestaurantCategory";
 
 const RestaurantMenu = () => {
   const { id } = useParams();
@@ -11,28 +12,27 @@ const RestaurantMenu = () => {
 
   const { name, cuisines, costForTwoMessage } =
     resInfo?.cards[0].card.card.info;
-  const { itemCards } =
-    resInfo?.cards[2].groupedCard.cardGroupMap.REGULAR.cards[2].card.card;
+
+  const categories =
+    resInfo?.cards[2].groupedCard.cardGroupMap.REGULAR.cards.filter(
+      (item) =>
+        item?.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
+  console.log("🚀 ~ categories:", categories);
 
   return (
-    <div className="menu">
-      <h1>{name}</h1>
+    <div className="container mx-auto">
+      <h1 className="text-lg font-semibold text-teal-900">{name}</h1>
 
-      <p>
+      <p className="text-gray-600">
         {cuisines && cuisines.join(", ")} - {costForTwoMessage}
       </p>
-
-      <ul className="menu-list">
-        {itemCards?.map((item) => (
-          <li>
-            {item.card.info.name} -{" "}
-            <strong>
-              Rs.{" "}
-              {item.card.info.price / 100 || item.card.info.defaultPrice / 100}
-            </strong>
-          </li>
+      <div className="grid divide-y divide-neutral-200 max-w-3xl mx-auto mt-8">
+        {categories.map((categories) => (
+          <RestaurantCategory categories={categories} />
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
