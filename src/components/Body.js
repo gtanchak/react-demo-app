@@ -53,15 +53,24 @@ const Body = () => {
   }
 
   return (
-    <div className="body">
+    <div className="body container mx-auto">
       <div className="filter-container">
         <div>
-          <input value={searchRes} onChange={handleSerarch} />
-          <button onClick={searchHandler}>Search</button>
+          <input
+            className="rounded-md border border-input bg-background px-3 py-2 text-sm"
+            value={searchRes}
+            onChange={handleSerarch}
+          />
+          <button
+            className="bg-teal-900 text-white px-3 py-2 rounded-md text-sm ml-2"
+            onClick={searchHandler}
+          >
+            Search
+          </button>
         </div>
         <button onClick={handleFilter}>Top Rated Restaurants</button>
       </div>
-      <div className="res-container">
+      <div className="grid grid-cols-4 gap-8">
         {filteredList.length ? (
           filteredList.map((res) => (
             <RestaurantCard key={res.info.id} restaurantList={res} />
