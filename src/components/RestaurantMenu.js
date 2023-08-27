@@ -29,8 +29,8 @@ const RestaurantMenu = () => {
         {cuisines && cuisines.join(", ")} - {costForTwoMessage}
       </p>
       <div className="grid divide-y divide-neutral-200 max-w-3xl mx-auto mt-8">
-        {categories.map((categories) => (
-          <RestaurantCategory categories={categories} />
+        {categories.map((categories, index) => (
+          <RestaurantCategory key={index} categories={categories} />
         ))}
       </div>
     </div>
