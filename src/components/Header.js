@@ -13,12 +13,12 @@ const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
 
   return (
-    <div className="header">
+    <div className="flex items-center justify-between">
       <div className="logo-container">
-        <img className="logo" src={LOGO_URL} />
+        <img className="w-32" src={LOGO_URL} />
       </div>
-      <div className="nav-items">
-        <ul>
+      <div>
+        <ul className="flex">
           <li>Online Status: {!onlineStatus ? "🔴" : "🟢"}</li>
           <li>
             <Link to="/">Home</Link>
