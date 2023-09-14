@@ -1,24 +1,25 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../hooks/useOnlineStatus";
-import { LOGO_URL } from "../constants/common";
+
 import { useSelector } from "react-redux";
+
+import Logo from "../assets/images/logo.svg";
 
 const Header = () => {
   const [btnText, setBtnText] = useState("Login");
 
   const onlineStatus = useOnlineStatus();
 
-
   const { cartItems } = useSelector((state) => state.cart);
 
   return (
-    <div className="flex items-center justify-between">
-      <div className="logo-container">
-        <img className="w-32" src={LOGO_URL} />
+    <div className="flex items-center justify-between py-3 px-3 shadow-2xl">
+      <div>
+        <img className="w-32" src={Logo} />
       </div>
       <div>
-        <ul className="flex">
+        <ul className="flex gap-5 items-center">
           <li>Online Status: {!onlineStatus ? "🔴" : "🟢"}</li>
           <li>
             <Link to="/">Home</Link>
@@ -41,7 +42,7 @@ const Header = () => {
             )}
           </li>
           <button
-            className="login"
+            className="bg-teal-900 text-white px-3 py-2 rounded-md text-sm"
             onClick={() =>
               btnText === "Login" ? setBtnText("Logout") : setBtnText("Login")
             }
