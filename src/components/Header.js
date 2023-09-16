@@ -34,12 +34,14 @@ const Header = () => {
             <Link to="/grocery">Grocery</Link>
           </li>
           <li>
-            Cart
-            {cartItems.length > 0 && (
-              <span className="ml-2 inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
-                {cartItems.length}
-              </span>
-            )}
+            <Link to="/cart">
+              Cart
+              {cartItems.length > 0 && (
+                <span className="ml-2 inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
+                  {cartItems.length}
+                </span>
+              )}
+            </Link>
           </li>
           <button
             className="bg-teal-900 text-white px-3 py-2 rounded-md text-sm"
