@@ -20,7 +20,9 @@ const AppLayout = () => {
     <Provider store={store}>
       <main>
         <Header />
-        <Outlet />
+        <div className="mt-28">
+          <Outlet />
+        </div>
       </main>
     </Provider>
   );
