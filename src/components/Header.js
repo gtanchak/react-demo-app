@@ -14,7 +14,7 @@ const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
 
   return (
-    <div className="flex items-center justify-between py-3 px-3 shadow-2xl">
+    <header className="flex items-center justify-between py-3 px-6 shadow-2xl fixed top-0 left-0 right-0 z-50 bg-white">
       <div>
         <img className="w-32" src={Logo} />
       </div>
@@ -51,7 +51,7 @@ const Header = () => {
           </button>
         </ul>
       </div>
-    </div>
+    </header>
   );
 };
 
