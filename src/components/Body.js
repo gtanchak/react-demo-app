@@ -53,7 +53,7 @@ const Body = () => {
   }
 
   return (
-    <div className="body container mx-auto">
+    <div>
       <div className="filter-container">
         <div>
           <input

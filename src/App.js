@@ -21,7 +21,7 @@ const AppLayout = () => {
     <Provider store={store}>
       <main>
         <Header />
-        <div className="mt-28">
+        <div className="mt-28 container mx-auto">
           <Outlet />
         </div>
       </main>
