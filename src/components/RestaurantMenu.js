@@ -22,7 +22,7 @@ const RestaurantMenu = () => {
   console.log("🚀 ~ categories:", categories);
 
   return (
-    <div className="container mx-auto">
+    <div>
       <h1 className="text-lg font-semibold text-teal-900">{name}</h1>
 
       <p className="text-gray-600">
