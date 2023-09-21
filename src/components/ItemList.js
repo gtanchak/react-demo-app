@@ -10,7 +10,6 @@ const ItemList = ({ itemCards }) => {
     <>
       {itemCards.map((item) => (
         <Fragment key={item.card.info.id}>
-          {console.log(item.card)}
           <div className="py-2 my-4 flex justify-between gap-5">
             <div>
               <h3 className="text-gray-700">{item?.card.info?.name}</h3>
